@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: colors
+spec:
+  containers:
+    - image: augustopimenta/colors:v1
+      name: colors.v1
+      ports:
+        - containerPort: 80
+          protocol: TCP
