@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: colors
+spec:
+  rules:
+    - host: v1.onlyfortests.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: colors-web
+              servicePort: 80
+    - host: v2.onlyfortests.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: colors-web2
+              servicePort: 80

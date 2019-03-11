@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: colors
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: colors
+  template:
+    metadata:
+      name: colors
+      labels:
+        version: v1.0
+        app: colors
+    spec:
+      containers:
+        - name: colors
+          image: augustopimenta/colors:1.1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 10
+          ports:
+            - containerPort: 80
+              protocol: TCP
